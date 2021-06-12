@@ -5,16 +5,6 @@ public class Assisstant extends Employee{
     int persnmr;
     Date eindatum;
 
-    @Override
-    public String toString() {
-        return "Assisstant{" +
-                "gehalt=" + gehalt +
-                ", persnmr=" + persnmr +
-                ", eindatum=" + eindatum +
-                ", Name='" + Name + '\'' +
-                ", Gebdatum=" + Gebdatum +
-                '}';
-    }
 
     public Assisstant(String name, Date gebdatum, float gehalt, int persnmr, Date eindatum) {
         super(name, gebdatum, gehalt, eindatum);
@@ -26,5 +16,15 @@ public class Assisstant extends Employee{
 
             }
         }
+    @Override
+    public String toString() {
+        return "Assisstant{" +
+                "gehalt=" + gehalt +
+                ", persnmr=" + persnmr +
+                ", eindatum=" + this.getEindatum() +
+                ", Name='" + Name + '\'' +
+                ", Gebdatum=" + Gebdatum +
+                '}';
+    }
     }
 

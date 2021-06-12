@@ -4,24 +4,11 @@ package com.company;
 public abstract class Employee extends Person {
     private Date Einstellungsdatum;
     private float gehalt;
-    public Employee(String name, Date gebdatum, float gehalt, Date eindatum ) {
-        super(name,gebdatum);
-            //super(name, gebdatum);
-            if(eindatum.compareDate(gebdatum)>=20) {
-                this.Einstellungsdatum = eindatum;
-            }
-            else {
-                System.out.println("der mann hat zu wenig Berufserfahrung mensch");
-            }
-            if(100>=gehalt) {
-                System.out.println("Das Gehalt des Professors ist zu niedrig.");
-            }
-            else if(500<=gehalt) {
-                System.out.println("Das Gehalt ist zu hoch");
-            }
-            else {
-                this.gehalt = gehalt;
-            }
+
+    public Employee(String name, Date gebdatum, float gehalt, Date eindatum) {
+        super(name, gebdatum);
+        setEindatum(eindatum);
+        setGehalt(gehalt);
 
     }
 
@@ -30,7 +17,10 @@ public abstract class Employee extends Person {
     }
 
     public void setEindatum(Date eindatum) {
-        this.Einstellungsdatum = eindatum;
+        if (eindatum.compareDate(this.getGebdatum()) >= 20) {
+            this.Einstellungsdatum = eindatum;
+        } else
+            throw new IllegalArgumentException("Falsches Datum");
     }
 
     public float getGehalt() {
@@ -38,8 +28,12 @@ public abstract class Employee extends Person {
     }
 
     public void setGehalt(float gehalt) {
-        this.gehalt = gehalt;
+        if (100 >= gehalt) {
+            throw new IllegalArgumentException("Das Gehalt des Professors ist zu niedrig.");
+        } else if (500 <= gehalt) { throw  new IllegalArgumentException("Dem Gehalt des Professors ist zu hoch");
+        } else {
+            this.gehalt = gehalt;
+        }
     }
 }
-
 

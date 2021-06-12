@@ -6,15 +6,38 @@ public abstract class Airplane extends FlyingBody implements Landable{
 
     public final static int DEFAULT_MAX_SPEED = 100;
     public final static int DEFAULT_WINGS_COUNT = 1;
+    private int Runwaywidth;
+    private int Runwaylength;
     private String manufacturer; // Herstellername
     private int maxSpeed = DEFAULT_MAX_SPEED; // Max. Geschwindigkeit > 0
     private int wingsCount = DEFAULT_WINGS_COUNT; // Anzahl Flügelpaare > 0
-    public Airplane(String manufacturer, int maxSpeed, int wingsCount) {
+    public Airplane(String manufacturer, int maxSpeed, int wingsCount, int runwaylength, int runwaywidth) {
         super(manufacturer,maxSpeed);
         setManufacturer(manufacturer);
         setWingsCount(wingsCount);
         setMaxSpeed(maxSpeed);
+        setRunwaylength(runwaylength);
+        setRunwaywidth(runwaywidth);
     }
+
+    public int getRunwaywidth() {
+        return Runwaywidth;
+    }
+
+    public void setRunwaywidth(int runwaywidth) {
+        if (runwaywidth>0)
+        Runwaywidth = runwaywidth;
+    }
+
+    public int getRunwaylength() {
+        return Runwaylength;
+    }
+
+    public void setRunwaylength(int runwaylength) {
+        if (runwaylength>0)
+        Runwaylength = runwaylength;
+    }
+
     public String getManufacturer() { return this.manufacturer; }
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;

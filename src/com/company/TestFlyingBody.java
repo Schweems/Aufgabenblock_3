@@ -4,17 +4,15 @@ import java.time.LocalTime;
 
 public class TestFlyingBody {
     public static void main(String[] args) {
-    testTransportAircraft();
-    //testDoubleDecker();
-    testRunway();
+    //testTransportAircraft();
+    testDoubleDecker();
+    //testRunway();
 
 
 
     }
     public static void testTransportAircraft(){
-
-
-        TransportAircraft Doner =  new TransportAircraft("Klaus",500,2,"Klausfluege",10,400);
+        TransportAircraft Doner =  new TransportAircraft("Klaus",500,2,"Klausfluege",10,400,50,50);
         System.out.println(Doner);
         LocalTime time = LocalTime.now();
         System.out.println("get maxSpeed "+Doner.getMaxSpeed());
@@ -26,11 +24,13 @@ public class TestFlyingBody {
         System.out.println(Doner.calcArrivalTime(time,2000,false));
         Runway runway1 = new Runway();
         System.out.println(Doner.landingcheck(runway1));
-        //Doner = null;
-        //System.gc();
+        Doner = null;
+        System.gc();
     }
     public static void testDoubleDecker(){
-        DoubleDecker DeineFeddeHummel = new DoubleDecker("Svenja",400,4,380,false);
+        DoubleDecker DeineFeddeHummel = new DoubleDecker("Svenja",400,4,380,false,100,50);
+        Runway runway1 = new Runway(3000,4000);
+        System.out.println(DeineFeddeHummel.landingcheck(runway1));
         System.out.println(DeineFeddeHummel);
         System.out.println("get maxSpeed "+DeineFeddeHummel.getMaxSpeed());
 

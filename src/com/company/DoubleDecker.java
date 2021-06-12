@@ -8,8 +8,8 @@ public class DoubleDecker extends Airplane{
     boolean cockpit ;//true = offen / false = geschlossen
 
 
-    public DoubleDecker(String manufacturer, int maxSpeed, int wingsCount, int aktgeschw, boolean cockpit) {
-        super(manufacturer, maxSpeed, wingsCount);
+    public DoubleDecker(String manufacturer, int maxSpeed, int wingsCount, int aktgeschw, boolean cockpit,int runwaylength, int runwaywidth) {
+        super(manufacturer, maxSpeed, wingsCount,runwaylength, runwaywidth);
         this.aktgeschw = aktgeschw;
         this.cockpit = cockpit;
         try {
@@ -21,8 +21,8 @@ public class DoubleDecker extends Airplane{
         }
     }
 
-    public DoubleDecker(String manufacturer, int maxSpeed, int wingsCount) {
-        super(manufacturer, maxSpeed, wingsCount);
+    public DoubleDecker(String manufacturer, int maxSpeed, int wingsCount,int runwaylength, int runwaywidth) {
+        super(manufacturer, maxSpeed, wingsCount,runwaylength, runwaywidth);
         this.cockpit = true;
         getLooping(aktgeschw,cockpit);
     }
@@ -53,7 +53,7 @@ public class DoubleDecker extends Airplane{
                 '}';
     }
     @Override
-    public LocalTime calcArrivalTime(LocalTime departure, int distance, boolean deinemom) {
+    public LocalTime calcArrivalTime(LocalTime departure, int distance,boolean test) {
         long time = (long) distance / this.getMaxSpeed();
         return departure.plusHours(time);
 
@@ -61,6 +61,6 @@ public class DoubleDecker extends Airplane{
 
     @Override
     public boolean landingcheck(Runway r) {
-        return r.getBahnlaenge() >= Default_Bahnlaenge && r.getBahnbreite() >= Default_Bahnbreite;
+        return r.getBahnlaenge() >= this.getRunwaylength() && r.getBahnbreite() >= this.getRunwaywidth() ;
     }
 }

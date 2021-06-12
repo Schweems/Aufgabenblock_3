@@ -9,8 +9,8 @@ public class TransportAircraft extends Airplane {
 
 
 
-    public TransportAircraft(String manufacturer, int maxSpeed, int wingsCount, String nameGessellschafft, int maxPassagiere, int reisegeschwindigkeit) throws IllegalArgumentException {
-        super(manufacturer, maxSpeed, wingsCount);
+    public TransportAircraft(String manufacturer, int maxSpeed, int wingsCount, String nameGessellschafft, int maxPassagiere, int reisegeschwindigkeit,int runwaylength, int runwaywidth) throws IllegalArgumentException {
+        super(manufacturer, maxSpeed, wingsCount,runwaylength,runwaywidth);
         NameGessellschafft = nameGessellschafft;
 
         try {
@@ -41,7 +41,7 @@ public class TransportAircraft extends Airplane {
             System.out.println(this.getMaxSpeed());
             System.out.println(reisegeschwindigkeit);
             throw new IllegalArgumentException("Reisegeschwindigkeit zu gross/klein");
-            //System.out.println("deine mum macht scheiss gliederung");
+
         }
     }
 
@@ -86,6 +86,6 @@ public class TransportAircraft extends Airplane {
 
     @Override
     public boolean landingcheck(Runway r) {
-        return r.getBahnlaenge() >= Default_Bahnlaenge && r.getBahnbreite() >= Default_Bahnbreite;
+        return r.getBahnlaenge() >= this.getRunwaylength() && r.getBahnbreite() >= this.getRunwaywidth() ;
     }
 }
